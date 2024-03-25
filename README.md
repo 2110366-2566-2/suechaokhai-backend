@@ -1,3 +1,11 @@
+## payment 
+
+```
+curl -X POST -is "http://localhost:8000/api/v2/payments" \
+-H "Content-Type: application/json" \
+-d '{"name": "Kuay", "price": 60000}'
+```
+
 ## Getting Started
 
 ### Frontend
