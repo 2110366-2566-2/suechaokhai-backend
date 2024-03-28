@@ -16,6 +16,8 @@ CREATE TYPE furnishing AS ENUM('UNFURNISHED', 'PARTIALLY_FURNISHED', 'FULLY_FURN
 
 CREATE TYPE floor_size_units AS ENUM('SQM', 'SQFT');
 
+CREATE TYPE payment_methods AS ENUM('CREDIT_CARD', 'PromptPay');
+
 CREATE TABLE email_verification_codes
 (
     email                     VARCHAR(50) PRIMARY KEY           NOT NULL,
@@ -190,6 +192,8 @@ CREATE TABLE messages (
 
 CREATE TABLE payments(
     payment_id UUID PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    agreement_id UUID REFERENCES agreements(agreement_id) NOT NULL,
+    payment_method payment_methods NOT NULL,
     user_id    UUID REFERENCES users(user_id)              NOT NULL, 
     price     DOUBLE PRECISION                           NOT NULL,
     IsSuccess BOOLEAN                                    NOT NULL, 

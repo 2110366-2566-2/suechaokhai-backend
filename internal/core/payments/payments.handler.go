@@ -38,7 +38,7 @@ func (h *handlerImpl) CreatePayment(c *fiber.Ctx) error {
 	userId := c.Locals("session").(models.Sessions).UserId
 	fmt.Println(userId)
 	payment.UserId = userId
-	fmt.Println("payment = ", payment)
+	fmt.Println("update_payment = ", payment.AgreementId)
 
 	if err := h.service.CreatePayment(&payment); err != nil {
 		return utils.ResponseError(c, err)

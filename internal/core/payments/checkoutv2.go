@@ -36,8 +36,8 @@ func CheckoutV2(c *fiber.Ctx, name string, price float64) error {
 				Quantity: stripe.Int64(1),
 			},
 		},
-		SuccessURL: stripe.String("http://localhost:4242/success"),
-		CancelURL:  stripe.String("http://localhost:4242/cancel"),
+		SuccessURL: stripe.String("http://localhost:3000"),
+		CancelURL:  stripe.String("http://localhost:3000"),
 	}
 
 	s, _ := session.New(params)
